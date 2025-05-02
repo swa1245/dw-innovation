@@ -2,9 +2,20 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+  
+  const handleNavigation = (path, e) => {
+    e.preventDefault();
+    setIsOpen(false);
+    // Small delay to allow exit animation to start before navigation
+    setTimeout(() => {
+      router.push(path);
+    }, 100);
+  };
 
   return (
     <motion.nav 
@@ -71,9 +82,11 @@ export default function Navbar() {
             >
               <Link
                 href={item.path}
-                className="text-white hover:text-gray-300 text-sm uppercase tracking-wide"
+                className="text-white hover:text-gray-300 text-sm uppercase tracking-wide relative group"
+                onClick={(e) => handleNavigation(item.path, e)}
               >
                 {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </motion.div>
           ))}
@@ -88,9 +101,11 @@ export default function Navbar() {
         >
           <Link
             href="/contact"
-            className="text-white hover:text-gray-300 font-medium text-sm uppercase tracking-wide"
+            className="text-white hover:text-gray-300 font-medium text-sm uppercase tracking-wide relative group"
+            onClick={(e) => handleNavigation('/contact', e)}
           >
             Contact Us
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
           </Link>
         </motion.div>
       </div>
@@ -125,10 +140,11 @@ export default function Navbar() {
             >
               <Link
                 href={item.path}
-                className="text-white text-sm uppercase tracking-wide hover:text-gray-300"
-                onClick={() => setIsOpen(false)}
+                className="text-white text-sm uppercase tracking-wide hover:text-gray-300 relative group"
+                onClick={(e) => handleNavigation(item.path, e)}
               >
                 {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </motion.div>
           ))}

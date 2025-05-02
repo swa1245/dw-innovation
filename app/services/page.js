@@ -2,10 +2,12 @@
 import { motion } from "framer-motion";
 import Navbar from '../components/Navbar';
 import Link from "next/link";
+import PageTransition from '../components/PageTransition';
 
 export default function Services() {
   return (
     <main>
+      <PageTransition>
       <Navbar />
       
       {/* Hero Section */}
@@ -340,6 +342,7 @@ export default function Services() {
           </motion.div>
         </div>
       </div>
+      </PageTransition>
     </main>
   );
 }
