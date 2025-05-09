@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { FiUser, FiMail, FiMessageSquare, FiSend, FiDollarSign, FiList, FiMapPin, FiPhone, FiMail as FiMailIcon } from 'react-icons/fi';
 import Image from 'next/image';
-import ContactImage from '../contactimage/Image.jpg';
+import ContactImage from '../contactimage/Image.png';
 import GoogleMap from './GoogleMap';
+import CustomCursor from "./CustomCursor";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,9 +13,28 @@ export default function Contact() {
     email: "",
     subject: "",
     service: "",
-    budget: 5000,
+    budget: 10000,
+    currency: "INR",
     message: ""
   });
+
+  // Exchange rate (1 USD = 83 INR approximately)
+  const exchangeRate = 83;
+
+  const getBudgetRange = () => {
+    const minBudget = formData.currency === "USD" ? 121 : 10000; // 10,000 INR ≈ 121 USD
+    const maxBudget = formData.currency === "USD" ? 50000 : 50000 * exchangeRate;
+    const step = formData.currency === "USD" ? 100 : 5000;
+    return { min: minBudget, max: maxBudget, step };
+  };
+
+  const formatBudget = (value) => {
+    return new Intl.NumberFormat(formData.currency === "USD" ? "en-US" : "en-IN", {
+      style: "currency",
+      currency: formData.currency,
+      maximumFractionDigits: 0
+    }).format(value);
+  };
 
   const serviceOptions = [
     "Web Development",
@@ -48,6 +68,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-[var(--background)] py-20 px-4 relative overflow-hidden">
+      <CustomCursor />
       {/* Background Decorative Elements */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-20 left-10 w-72 h-72 bg-gray-300/50 rounded-full blur-3xl"></div>
@@ -136,25 +157,47 @@ export default function Contact() {
               <motion.div variants={itemVariants} className="space-y-2">
                 <div className="flex justify-between items-center">
                   <label className="text-[var(--foreground)] font-medium">Budget Range</label>
-                  <span className="text-[var(--foreground)] font-medium">${formData.budget.toLocaleString()}</span>
+                  <span className="text-[var(--foreground)] font-medium">{formatBudget(formData.budget)}</span>
                 </div>
-                <div className="relative">
-                  <FiDollarSign className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" />
-                  <input
-                    type="range"
-                    min="1000"
-                    max="50000"
-                    step="1000"
-                    className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer"
-                    value={formData.budget}
-                    onChange={(e) => setFormData({...formData, budget: parseInt(e.target.value)})}
-                  />
-                </div>
-                <div className="flex justify-between text-xs text-gray-600">
-                  <span>$1,000</span>
-                  <span>$25,000</span>
-                  <span>$50,000+</span>
-                </div>
+                <motion.div variants={itemVariants} className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <label className="text-gray-600">Currency:</label>
+                    <select
+                      className="px-4 py-2 bg-white/90 rounded-xl border border-gray-300 text-[var(--foreground)] focus:outline-none focus:border-gray-400 focus:ring-2 focus:ring-gray-200 transition-all"
+                      value={formData.currency}
+                      onChange={(e) => {
+                        const newCurrency = e.target.value;
+                        const oldBudget = formData.budget;
+                        const newBudget = newCurrency === "USD" 
+                          ? Math.round(oldBudget / exchangeRate)
+                          : Math.round(oldBudget * exchangeRate);
+                        setFormData({...formData, currency: newCurrency, budget: newBudget});
+                      }}
+                    >
+                      <option value="USD">USD</option>
+                      <option value="INR">INR</option>
+                    </select>
+                  </div>
+                  <div className="relative">
+                    {formData.currency === "USD" ? (
+                      <FiDollarSign className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" />
+                    ) : (
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600">₹</span>
+                    )}
+                    <input
+                      type="range"
+                      className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                      min={getBudgetRange().min}
+                      max={getBudgetRange().max}
+                      step={getBudgetRange().step}
+                      value={formData.budget}
+                      onChange={(e) => setFormData({...formData, budget: parseInt(e.target.value)})}
+                    />
+                    <div className="text-center mt-2 text-gray-600">
+                      Budget: {formatBudget(formData.budget)}
+                    </div>
+                  </div>
+                </motion.div>
               </motion.div>
 
               <motion.div variants={itemVariants}>
@@ -187,7 +230,7 @@ export default function Contact() {
           {/* Image Section */}
           <motion.div 
             variants={itemVariants}
-            className="flex-1 w-full lg:w-1/2 relative h-[600px] rounded-3xl overflow-hidden"
+            className="flex-1 w-full lg:w-1/2 relative h-[800px] rounded-3xl overflow-hidden"
           >
             <Image
               src={ContactImage}
@@ -222,7 +265,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-semibold text-lg text-[var(--foreground)]">Address</h3>
-                <p className="text-[var(--foreground)] opacity-80">123 Innovation Street, Tech Hub, NY 10001, USA</p>
+                <p className="text-[var(--foreground)] opacity-80">Shreya Hub,Office no 13 ,3rd floor,Pari chouk, 41, near CNG Gas Station, Narhe, Katraj,Pune, Maharashtra 411041</p>
               </div>
             </div>
             
@@ -232,7 +275,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-semibold text-lg text-[var(--foreground)]">Phone</h3>
-                <p className="text-[var(--foreground)] opacity-80">+1 (555) 123-4567</p>
+                <p className="text-[var(--foreground)] opacity-80">+91 9284117439</p>
               </div>
             </div>
             
@@ -241,8 +284,12 @@ export default function Contact() {
                 <FiMailIcon className="text-xl text-[var(--foreground)]" />
               </div>
               <div>
-                <h3 className="font-semibold text-lg text-[var(--foreground)]">Email</h3>
-                <p className="text-[var(--foreground)] opacity-80">contact@dw-innovation.com</p>
+                <h3 className="font-semibold text-lg text-[var(--foreground)]">HR Email</h3>
+                <p className="text-[var(--foreground)] opacity-80">hr@dwi4u.com</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg text-[var(--foreground)]">Marketing Email</h3>
+                <p className="text-[var(--foreground)] opacity-80">marketing@dwi4u.com</p>
               </div>
             </div>
             

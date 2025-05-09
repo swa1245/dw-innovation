@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import PageTransition from "../components/PageTransition";
 import Navbar from "../components/Navbar";
 import Link from "next/link";
+import CustomCursor from "../components/CustomCursor";
 
 const AboutPage = () => {
   // Images for the slider from public folder
@@ -54,6 +55,7 @@ const AboutPage = () => {
       <PageTransition>
         <div className="fixed top-0 left-0 right-0 z-50">
           <Navbar />
+          <CustomCursor />
         </div>
         <div className="bg-white pt-16"> {/* Added padding-top instead of margin */}
           {/* Modern Split-Screen Image Slider */}

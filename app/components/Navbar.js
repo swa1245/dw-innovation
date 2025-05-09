@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import logo from '../logo/DWI logo ong.png';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,9 +30,9 @@ export default function Navbar() {
           initial={{ x: -20, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-white font-bold text-2xl tracking-tight"
+          className="bg-white rounded-lg px-3 py-1"
         >
-          Logo
+         <Image src={logo} alt="DW Innovation Logo" width={128} height={40} className="w-32 object-contain" priority /> 
         </motion.div>
 
         {/* Hamburger Menu for Mobile */}
@@ -69,10 +71,10 @@ export default function Navbar() {
           {[
             { name: "Home", path: "/" },
             { name: "Services", path: "/services" },
-            { name: "Our Clients", path: "/clients" },
-            { name: "Blog", path: "/blog" },
-            { name: "Industries", path: "/industries" },
             { name: "About Us", path: "/about" },
+            { name: "Our Clients", path: "/clients" },
+            { name: "Blog", path: "/blogs" },
+            { name: "Industries", path: "/industries" },
             { name: "Hire", path: "/hire" }
           ].map((item, index) => (
             <motion.div key={item.name}

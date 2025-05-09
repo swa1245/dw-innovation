@@ -12,6 +12,24 @@ import profile31 from './profileimages/profile31.jpg';
 import profile5 from './profileimages/profile5.jpg';
 import profile6 from './profileimages/profile6.jpg';
 
+// Import logo images
+import logo1 from './logoimage/WhatsApp Image 2025-05-09 at 10.40.20_108884c8.jpg';
+import logo2 from './logoimage/WhatsApp Image 2025-05-09 at 10.40.20_199c5863.jpg';
+import logo3 from './logoimage/WhatsApp Image 2025-05-09 at 10.40.20_5847bdf6.jpg';
+import logo4 from './logoimage/WhatsApp Image 2025-05-09 at 10.40.20_5b4ef7af.jpg';
+import logo5 from './logoimage/WhatsApp Image 2025-05-09 at 10.40.20_a6859df3.jpg';
+import logo6 from './logoimage/WhatsApp Image 2025-05-09 at 10.40.20_a900b386.jpg';
+import logo7 from './logoimage/WhatsApp Image 2025-05-09 at 10.40.20_d943b8b4.jpg';
+
+// Import project images
+import projImage1 from './projimage/WhatsApp Image 2025-05-01 at 11.44.28_22f3fe78.jpg';
+import projImage2 from './projimage/WhatsApp Image 2025-05-01 at 11.44.28_4cde3a57.jpg';
+import projImage3 from './projimage/WhatsApp Image 2025-05-01 at 11.44.29_849feeb7.jpg';
+import projImage4 from './projimage/WhatsApp Image 2025-05-01 at 11.44.29_bf4a0a1b.jpg';
+import projImage5 from './projimage/WhatsApp Image 2025-05-01 at 11.44.30_5850cf38.jpg';
+import projImage6 from './projimage/WhatsApp Image 2025-05-01 at 11.44.30_5e8179ad.jpg';
+import projImage7 from './projimage/WhatsApp Image 2025-05-01 at 11.44.30_86737192.jpg';
+
 
 // Counter component for animated counting effect
 const Counter = ({ end, duration = 2000, label, suffix = "" }) => {
@@ -108,7 +126,7 @@ export default function Home() {
             className="relative max-w-4xl mx-auto mb-12 px-4"
           >
             {/* Title Text */}
-            <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-tight mb-8">
+            <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl  font-bold tracking-tight mb-8">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -217,44 +235,54 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Marquee Section */}
-      <div className="bg-[#E9E9E9] py-10 overflow-hidden">
-        <div className="relative">
-          {/* First Marquee - Left to Right */}
-          <div className="marquee-container">
-            <div className="marquee marquee-left-to-right">
-              {Array(2).fill().map((_, i) => (
-                <div key={`left-${i}`} className="marquee-content">
-                  {[
-                    "React", "Next.js", "Angular", "Vue", "Node.js", "Express",
-                    "MongoDB", "PostgreSQL", "Firebase", "AWS", "Azure",
-                    "TypeScript", "JavaScript", "Python", "Java", "Swift", "Kotlin"
-                  ].map((name, index) => (
-                    <div key={`left-${i}-${index}`} className="mx-8 text-[#222222] text-xl md:text-2xl font-medium opacity-80">
-                      {name}
+      {/* Partners & Customers Section */}
+      <div className="bg-[#f5f7ff] py-16 overflow-hidden relative">
+        <div className="container mx-auto relative">
+          <div className="flex flex-col md:flex-row items-center">
+            {/* Logo Marquee - Takes 75% width on desktop */}
+            <div className="w-full md:w-3/4 overflow-hidden">
+              <div className="marquee-container">
+                <div className="marquee marquee-left-to-right">
+                  {Array(3).fill().map((_, i) => (
+                    <div key={`marquee-${i}`} className="marquee-content">
+                      {[
+                        logo1, logo2, logo3, logo4, logo5, logo6, logo7
+                      ].map((logo, index) => (
+                        <div 
+                          key={`marquee-${i}-${index}`} 
+                          className="mx-4 my-2 flex items-center justify-center"
+                        >
+                          {/* Hexagon container for logo */}
+                          <div className="relative">
+                            {/* Hexagon shape */}
+                            <div className="w-24 h-24 md:w-28 md:h-28 bg-white rounded-xl transform rotate-45 shadow-sm"></div>
+                            {/* Logo centered inside hexagon */}
+                            <div className="absolute inset-0 flex items-center justify-center">
+                              <Image 
+                                src={logo} 
+                                alt={`Partner Logo ${index + 1}`} 
+                                width={80} 
+                                height={80} 
+                                className="object-contain w-16 h-16 md:w-20 md:h-20 transform -rotate-45"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   ))}
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
-
-          {/* Second Marquee - Right to Left */}
-          <div className="marquee-container mt-8">
-            <div className="marquee marquee-right-to-left">
-              {Array(2).fill().map((_, i) => (
-                <div key={`right-${i}`} className="marquee-content">
-                  {[
-                    "HTML5", "CSS3", "TailwindCSS", "Bootstrap", "Material UI",
-                    "Redux", "GraphQL", "REST API", "Docker", "Kubernetes",
-                    "CI/CD", "Git", "GitHub", "Figma", "Adobe XD", "Sketch", "WordPress"
-                  ].map((name, index) => (
-                    <div key={`right-${i}-${index}`} className="mx-8 text-[#222222] text-xl md:text-2xl font-medium opacity-80">
-                      {name}
-                    </div>
-                  ))}
-                </div>
-              ))}
+            
+            {/* Title Section - Takes 25% width on desktop */}
+            <div className="w-full md:w-1/4 p-6 md:p-8 flex items-center justify-center md:justify-start">
+              <div className="text-center md:text-left">
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#09182C]">
+                  Customers &<br />
+                  <span className="text-blue-600">Partners</span>
+                </h2>
+              </div>
             </div>
           </div>
         </div>
@@ -284,38 +312,22 @@ export default function Home() {
                 {
                   name: "WEB DEVELOPMENT",
                   year: "5+ yrs",
-                  image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                  projectImage: "https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  projectImage: projImage1
                 },
                 {
                   name: "APP DEVELOPMENT",
                   year: "4+ yrs",
-                  image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                  projectImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                },
-                {
-                  name: "ERP & CRM SYSTEMS",
-                  year: "3+ yrs",
-                  image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                  projectImage: "https://images.unsplash.com/photo-1617788138017-80ad40651399?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  projectImage: projImage2
                 },
                 {
                   name: "UI/UX DESIGN",
                   year: "5+ yrs",
-                  image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                  projectImage: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                },
-                {
-                  name: "DIGITAL MARKETING",
-                  year: "4+ yrs",
-                  image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                  projectImage: "https://images.unsplash.com/photo-1642132652806-8c3ad9f9ab7f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  projectImage: projImage3
                 },
                 {
                   name: "E-COMMERCE",
                   year: "3+ yrs",
-                  image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                  projectImage: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  projectImage: projImage4
                 },
               ].map((company, index) => {
                 // State for tracking mouse position within this specific section
@@ -370,10 +382,13 @@ export default function Home() {
                           y: { duration: 0.2, ease: "easeOut" }
                         }}
                       >
-                        <img
+                        <Image
                           src={company.projectImage}
                           alt={`${company.name} project`}
+                          fill
                           className="w-full h-full object-cover"
+                          sizes="(max-width: 768px) 100vw, 400px"
+                          priority={index === 0}
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
 
@@ -503,88 +518,93 @@ export default function Home() {
                   title: "E-Commerce Platform",
                   client: "FashionRetail Inc.",
                   category: "Web Development",
-                  image: "https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage1
                 },
                 {
                   title: "Banking Mobile App",
                   client: "FinTech Solutions",
                   category: "App Development",
-                  image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage2
                 },
                 {
                   title: "CRM Implementation",
                   client: "Global Logistics",
                   category: "ERP & CRM Systems",
-                  image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage3
                 },
                 {
                   title: "Brand Redesign",
                   client: "Organic Foods Co.",
                   category: "UI/UX Design",
-                  image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage4
                 },
                 {
                   title: "SEO Campaign",
                   client: "TechStart Inc.",
                   category: "Digital Marketing",
-                  image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage5
                 },
                 {
                   title: "Online Marketplace",
                   client: "ArtisanCraft",
                   category: "E-Commerce",
-                  image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage6
                 },
                 // Duplicate for continuous effect
                 {
                   title: "E-Commerce Platform",
                   client: "FashionRetail Inc.",
                   category: "Web Development",
-                  image: "https://images.unsplash.com/photo-1523381294911-8d3cead13475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage1
                 },
                 {
                   title: "Banking Mobile App",
                   client: "FinTech Solutions",
                   category: "App Development",
-                  image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage2
                 },
                 {
                   title: "CRM Implementation",
                   client: "Global Logistics",
                   category: "ERP & CRM Systems",
-                  image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage3
                 },
                 {
                   title: "Brand Redesign",
                   client: "Organic Foods Co.",
                   category: "UI/UX Design",
-                  image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage4
                 },
                 {
                   title: "SEO Campaign",
                   client: "TechStart Inc.",
                   category: "Digital Marketing",
-                  image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage5
                 },
                 {
                   title: "Online Marketplace",
                   client: "ArtisanCraft",
                   category: "E-Commerce",
-                  image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage6
                 },
               ].map((project, index) => (
                 <div
                   key={`project1-${index}`}
-                  className="w-[300px] h-[300px] flex-shrink-0 rounded-xl overflow-hidden group relative"
+                  className="w-[500px] h-[300px] flex-shrink-0 rounded-xl overflow-hidden group relative"
                   onMouseEnter={() => setPauseFirstRow(true)}
                   onMouseLeave={() => setPauseFirstRow(false)}
                 >
-                  {/* Simple image with hover text */}
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+                  {/* Next.js Image component with hover effect */}
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 300px"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      priority={index < 2}
+                    />
+                  </div>
 
                   {/* Overlay that appears on hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">
@@ -615,88 +635,93 @@ export default function Home() {
                   title: "Healthcare Portal",
                   client: "MediCare Group",
                   category: "Web Development",
-                  image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage7
                 },
                 {
                   title: "Fitness Tracker App",
                   client: "FitLife Inc.",
                   category: "App Development",
-                  image: "https://images.unsplash.com/photo-1576153192396-180ecef2a715?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage1
                 },
                 {
                   title: "Inventory Management",
                   client: "Global Manufacturing",
                   category: "ERP & CRM Systems",
-                  image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage2
                 },
                 {
                   title: "Travel Platform UI",
                   client: "Wanderlust Travel",
                   category: "UI/UX Design",
-                  image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage3
                 },
                 {
                   title: "Content Strategy",
                   client: "Media Publishing",
                   category: "Digital Marketing",
-                  image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage4
                 },
                 {
                   title: "Subscription Service",
                   client: "BoxDelivery Co.",
                   category: "E-Commerce",
-                  image: "https://images.unsplash.com/photo-1586880244406-556ebe35f282?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage5
                 },
                 // Duplicate for continuous effect
                 {
                   title: "Healthcare Portal",
                   client: "MediCare Group",
                   category: "Web Development",
-                  image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage7
                 },
                 {
                   title: "Fitness Tracker App",
                   client: "FitLife Inc.",
                   category: "App Development",
-                  image: "https://images.unsplash.com/photo-1576153192396-180ecef2a715?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage1
                 },
                 {
                   title: "Inventory Management",
                   client: "Global Manufacturing",
                   category: "ERP & CRM Systems",
-                  image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage2
                 },
                 {
                   title: "Travel Platform UI",
                   client: "Wanderlust Travel",
                   category: "UI/UX Design",
-                  image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage3
                 },
                 {
                   title: "Content Strategy",
                   client: "Media Publishing",
                   category: "Digital Marketing",
-                  image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage4
                 },
                 {
                   title: "Subscription Service",
                   client: "BoxDelivery Co.",
                   category: "E-Commerce",
-                  image: "https://images.unsplash.com/photo-1586880244406-556ebe35f282?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  image: projImage5
                 },
               ].map((project, index) => (
                 <div
                   key={`project2-${index}`}
-                  className="w-[300px] h-[300px] flex-shrink-0 rounded-xl overflow-hidden group relative"
+                  className="w-[500px] h-[300px] flex-shrink-0 rounded-xl overflow-hidden group relative"
                   onMouseEnter={() => setPauseSecondRow(true)}
                   onMouseLeave={() => setPauseSecondRow(false)}
                 >
-                  {/* Simple image with hover text */}
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  />
+                  {/* Next.js Image component with hover effect */}
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 300px"
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      priority={index < 2}
+                    />
+                  </div>
 
                   {/* Overlay that appears on hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-end p-6">

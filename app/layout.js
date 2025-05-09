@@ -13,6 +13,16 @@ const outfit = Outfit({
   display: 'swap',
 });
 
+export const metadata = {
+  title: 'DW Innovation',
+  description: 'Digital Agency',
+  icons: {
+    icon: false,
+    shortcut: false,
+    apple: false
+  }
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

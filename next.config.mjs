@@ -9,6 +9,10 @@ const nextConfig = {
         pathname: '/free-photo/**',
       },
     ],
+    unoptimized: true,
+  },
+  devIndicators: {
+    buildActivity: false,
   },
 };
 

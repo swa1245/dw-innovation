@@ -31,7 +31,7 @@ export default function Footer() {
     <footer className="bg-[#09182C] text-white">
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-16">
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -39,15 +39,15 @@ export default function Footer() {
           className="flex flex-col lg:flex-row justify-between"
         >
           {/* DW Innovation */}
-          <motion.div variants={itemVariants} className="mb-8 lg:mb-0 lg:w-1/5">
+          <motion.div variants={itemVariants} className="mb-8 lg:mb-0 lg:w-1/4">
             <h3 className="text-xl font-bold mb-4">DW Innovation</h3>
             <p className="text-gray-300 text-sm leading-relaxed mb-4">
-              We create elegant web, mobile, and digital experiences that bring your ideas into reality.
+              We create elegant web, mobile, and digital experiences that bring ideas into reality.
             </p>
             <div className="flex space-x-4">
-              <motion.a 
-                href="https://linkedin.com" 
-                target="_blank" 
+              <motion.a
+                href="https://www.linkedin.com/company/dw-innovation-pvt-ltd/"
+                target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -5, color: "#0077B5" }}
                 transition={{ duration: 0.2 }}
@@ -55,19 +55,19 @@ export default function Footer() {
               >
                 <FaLinkedin size={20} />
               </motion.a>
-              <motion.a 
-                href="https://twitter.com" 
-                target="_blank" 
+              {/* <motion.a
+                href="https://twitter.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -5, color: "#1DA1F2" }}
                 transition={{ duration: 0.2 }}
                 className="text-gray-300 hover:text-white"
               >
                 <FaTwitter size={20} />
-              </motion.a>
-              <motion.a 
-                href="https://instagram.com" 
-                target="_blank" 
+              </motion.a> */}
+              <motion.a
+                href="https://www.instagram.com/dw_innovation_?utm_source=qr&igsh=MXFhYnB5YjI4YnVsMw=="
+                target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -5, color: "#E1306C" }}
                 transition={{ duration: 0.2 }}
@@ -75,16 +75,16 @@ export default function Footer() {
               >
                 <FaInstagram size={20} />
               </motion.a>
-              <motion.a 
-                href="https://github.com" 
-                target="_blank" 
+              {/* <motion.a
+                href="https://github.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ y: -5, color: "#6e5494" }}
                 transition={{ duration: 0.2 }}
                 className="text-gray-300 hover:text-white"
               >
                 <FaGithub size={20} />
-              </motion.a>
+              </motion.a> */}
             </div>
           </motion.div>
 
@@ -100,7 +100,7 @@ export default function Footer() {
                 { name: "About Us", path: "/about" },
               ].map((link) => (
                 <li key={link.name}>
-                  <Link 
+                  <Link
                     href={link.path}
                     className="text-gray-300 hover:text-white transition-colors duration-300 text-sm inline-block relative group"
                   >
@@ -124,7 +124,7 @@ export default function Footer() {
                 { name: "Digital Marketing", path: "/services#marketing" },
               ].map((service) => (
                 <li key={service.name}>
-                  <Link 
+                  <Link
                     href={service.path}
                     className="text-gray-300 hover:text-white transition-colors duration-300 text-sm inline-block relative group"
                   >
@@ -153,7 +153,7 @@ export default function Footer() {
                     { name: "TypeScript", path: "/technologies#typescript" },
                   ].map((tech) => (
                     <li key={tech.name}>
-                      <Link 
+                      <Link
                         href={tech.path}
                         className="text-gray-300 hover:text-white transition-colors duration-300 text-sm inline-block relative group"
                       >
@@ -174,11 +174,11 @@ export default function Footer() {
                     { name: "Python", path: "/technologies#python" },
                     { name: "Java", path: "/technologies#java" },
                     { name: ".NET", path: "/technologies#dotnet" },
-                    {name:"websocket",path:"/technologies#websocket"}
-                 
+                    { name: "websocket", path: "/technologies#websocket" }
+
                   ].map((tech) => (
                     <li key={tech.name}>
-                      <Link 
+                      <Link
                         href={tech.path}
                         className="text-gray-300 hover:text-white transition-colors duration-300 text-sm inline-block relative group"
                       >
@@ -199,7 +199,7 @@ export default function Footer() {
                     { name: "Flutter", path: "/technologies#flutter" },
                   ].map((tech) => (
                     <li key={tech.name}>
-                      <Link 
+                      <Link
                         href={tech.path}
                         className="text-gray-300 hover:text-white transition-colors duration-300 text-sm inline-block relative group"
                       >
@@ -223,7 +223,7 @@ export default function Footer() {
                     { name: "DevOps", path: "/technologies#devops" }
                   ].map((tech) => (
                     <li key={tech.name}>
-                      <Link 
+                      <Link
                         href={tech.path}
                         className="text-gray-300 hover:text-white transition-colors duration-300 text-sm inline-block relative group"
                       >
@@ -243,21 +243,36 @@ export default function Footer() {
             <div className="space-y-3">
               <p className="text-gray-300 text-sm flex items-start">
                 <span className="mr-2 mt-1">📍</span>
-                <span>123 Innovation Street, Tech City, 10001</span>
+                <span>Shreya Hub,Office no 13 ,3rd floor,Pari chouk, 41, near CNG Gas Station, Narhe, Katraj,Pune, Maharashtra 411041</span>
               </p>
               <p className="text-gray-300 text-sm flex items-center">
                 <span className="mr-2">📞</span>
-                <span>+1 (555) 123-4567</span>
+               
+                <span>HR: 9284117439</span>
               </p>
               <p className="text-gray-300 text-sm flex items-center">
-                <FaEnvelope className="mr-2" size={14} />
-                <a 
-                  href="mailto:info@dwinnovation.com" 
+                <span className="mr-2 text-red-500">✉️</span>
+                <a
+                  href="mailto:hr@dwi4u.com"
                   className="hover:text-white transition-colors duration-300 relative group"
                 >
-                  info@dwinnovation.com
+                  hr@dwi4u.com
+
                   <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300"></span>
                 </a>
+
+              </p>
+              <p className="text-gray-300 text-sm flex items-center">
+              <span className="mr-2">✉️</span>
+                <a
+                  href="mailto:marketing@dwi4u.com"
+                  className="hover:text-white transition-colors duration-300 relative group"
+                >
+                  marketing@dwi4u.com
+
+                  <span className="absolute left-0 bottom-0 h-[1px] bg-white w-0 group-hover:w-full transition-all duration-300"></span>
+                </a>
+
               </p>
             </div>
             <div className="pt-4">
@@ -280,7 +295,7 @@ export default function Footer() {
       <div className="py-6 border-t border-gray-800 bg-[#071525]">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © {currentYear} DW Innovation. All rights reserved.
+            © {currentYear} DW Innovation Pvt. Ltd. All rights reserved.
           </p>
           <div className="mt-4 md:mt-0 flex space-x-6">
             <Link href="/privacy-policy" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
